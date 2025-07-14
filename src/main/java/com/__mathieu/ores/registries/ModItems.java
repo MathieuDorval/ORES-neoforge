@@ -8,6 +8,7 @@ import com.__mathieu.ores.lists.def.ItemTypeDefinition;
 import com.__mathieu.ores.lists.ItemList;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -28,31 +29,28 @@ public class ModItems {
     }
 
     private static void registerDerivedItems() {
+        Rarity[] rarities = Rarity.values();
+
         for (OreDefinition material : OreList.ORES) {
             String oreName = material.getName();
 
-            // **CORRECTION ICI : Utiliser ModItemTypes.ITEM_TYPES**
             for (ItemTypeDefinition itemTypeDef : ItemList.ITEM_TYPES) {
                 String fullItemName = itemTypeDef.getFullName(oreName);
 
-                // --- Logique pour filtrer la création d'items non pertinents (selon vos règles) ---
-                if (itemTypeDef.getName().equals("raw") && !material.requiresSmelting()) {
-                    continue;
-                }
-                if (itemTypeDef.getName().equals("ingot") && !material.requiresSmelting()) {
-                    continue;
-                }
-                if (itemTypeDef.getName().equals("gem") && material.requiresSmelting()) {
-                    continue;
-                }
-                if (itemTypeDef.getName().equals("dust") && !material.getDropItemForm().equals("dust")) {
-                    continue;
-                }
-                if (itemTypeDef.getName().equals("nugget") && !material.getBaseForm().equals("ingot")) {
-                    continue;
-                }
+                Rarity oreRarity = material.getRarity();
+                Rarity itemTypeRarity = itemTypeDef.getRarity();
 
-                Item.Properties properties = new Item.Properties();
+                Rarity finalRarity = rarities[Math.max(oreRarity.ordinal(), itemTypeRarity.ordinal())];
+
+                boolean finalIsFireResistant = material.isFireResistant() || itemTypeDef.isFireResistant();
+
+                Item.Properties properties = new Item.Properties()
+                        .stacksTo(itemTypeDef.getMaxStackSize())
+                        .rarity(finalRarity);
+
+                if (finalIsFireResistant) {
+                    properties.fireResistant();
+                }
 
                 DeferredItem<Item> registeredItem = ITEMS.registerSimpleItem(fullItemName, properties);
                 DERIVED_ITEMS.put(fullItemName, registeredItem);
