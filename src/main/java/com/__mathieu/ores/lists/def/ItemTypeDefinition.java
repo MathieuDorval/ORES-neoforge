@@ -2,9 +2,9 @@ package com.__mathieu.ores.lists.def;
 
 
 public class ItemTypeDefinition {
-    private final String name;   // Le nom du type (ex: "ingot", "dust")
-    private final String prefix; // Le préfixe à ajouter au nom du minerai (ex: "raw")
-    private final String suffix; // Le suffixe à ajouter au nom du minerai (ex: "ingot")
+    private final String name;
+    private final String prefix;
+    private final String suffix;
 
     public ItemTypeDefinition(String name, String prefix, String suffix) {
         this.name = name;

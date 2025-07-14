@@ -1,7 +1,7 @@
 package com.__mathieu.ores.lists.def;
 
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.block.SoundType; // Importez SoundType
+import net.minecraft.world.level.block.SoundType;
 
 public class StoneDefinition {
     private final String name;
@@ -21,7 +21,7 @@ public class StoneDefinition {
         this.hardness = hardness;
         this.resistance = resistance;
         this.mapColor = mapColor;
-        this.soundType = soundType; // Initialisez le nouveau paramètre
+        this.soundType = soundType;
     }
 
     public String getName() {
@@ -66,7 +66,7 @@ public class StoneDefinition {
                 ", hardness=" + hardness +
                 ", resistance=" + resistance +
                 ", mapColor=" + mapColor +
-                ", soundType=" + soundType + // Ajoutez au toString
+                ", soundType=" + soundType +
                 '}';
     }
 }

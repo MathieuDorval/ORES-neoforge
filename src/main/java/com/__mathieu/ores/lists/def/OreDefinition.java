@@ -5,11 +5,11 @@ public class OreDefinition {
     private final int toolLevel;
     private final int rarity;
     private final boolean requiresSmelting;
-    private final String baseForm; // Le type d'item de base *après traitement* (ex: "gem", "ingot", "dust")
+    private final String baseForm;
 
-    private final int minDrops; // Nombre minimum d'items lâchés lors du minage
-    private final int maxDrops; // Nombre maximum d'items lâchés lors du minage
-    private final String dropItemForm; // La forme de l'item lâché directement lors du minage (ex: "raw", "gem", "dust")
+    private final int minDrops;
+    private final int maxDrops;
+    private final String dropItemForm;
 
     public OreDefinition(String name, int toolLevel, int rarity, boolean requiresSmelting, String baseForm,
                          int minDrops, int maxDrops, String dropItemForm) {
