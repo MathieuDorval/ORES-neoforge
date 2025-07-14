@@ -1,6 +1,6 @@
-package com.__mathieu.ores.lists;
+package com.__mathieu.ores.core.lists;
 
-import com.__mathieu.ores.lists.def.OreDefinition;
+import com.__mathieu.ores.core.definitions.OreDefinition;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;

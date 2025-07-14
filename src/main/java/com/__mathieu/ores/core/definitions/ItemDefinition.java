@@ -1,5 +1,5 @@
 // src/main/java/com/__mathieu/ores/lists/def/ItemTypeDefinition.java
-package com.__mathieu.ores.lists.def;
+package com.__mathieu.ores.core.definitions;
 
 import net.minecraft.world.item.Rarity;
 

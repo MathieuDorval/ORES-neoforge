@@ -31,13 +31,13 @@ public class ORES {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        LOGGER.info("HELLO FROM COMMON SETUP - ORES Mod Loaded!");
+        LOGGER.info("HELLO FROM COMMON SETUP -- ORES Mod Loaded! --");
 
     }
 
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("HELLO from server starting - ORES Mod!");
+        LOGGER.info("HELLO FROM SERVER STARTING -- ORES Mod! --");
     }
 }

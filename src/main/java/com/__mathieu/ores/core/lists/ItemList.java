@@ -1,6 +1,6 @@
-package com.__mathieu.ores.lists;
+package com.__mathieu.ores.core.lists;
 
-import com.__mathieu.ores.lists.def.ItemDefinition;
+import com.__mathieu.ores.core.definitions.ItemDefinition;
 import net.minecraft.world.item.Rarity;
 
 public class ItemList {

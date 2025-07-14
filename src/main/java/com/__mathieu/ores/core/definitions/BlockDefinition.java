@@ -1,5 +1,5 @@
 // src/main/java/com/__mathieu/ores/lists/def/BlockDefinition.java
-package com.__mathieu.ores.lists.def;
+package com.__mathieu.ores.core.definitions;
 
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.block.SoundType;

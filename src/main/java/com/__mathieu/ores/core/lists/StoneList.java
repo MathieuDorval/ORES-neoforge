@@ -1,7 +1,7 @@
 // src/main/java/com/__mathieu/ores/lists/StoneList.java
-package com.__mathieu.ores.lists;
+package com.__mathieu.ores.core.lists;
 
-import com.__mathieu.ores.lists.def.StoneDefinition;
+import com.__mathieu.ores.core.definitions.StoneDefinition;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
