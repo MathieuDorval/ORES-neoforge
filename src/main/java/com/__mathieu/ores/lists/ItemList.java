@@ -10,8 +10,7 @@ public class ItemList {
             new ItemTypeDefinition("ingot", "", "ingot"),
             new ItemTypeDefinition("dust", "", "dust"),
             new ItemTypeDefinition("nugget", "", "nugget"),
-            new ItemTypeDefinition("gem", "", ""),
-            new ItemTypeDefinition("block", "", "block"));
+            new ItemTypeDefinition("gem", "", ""));
 
     private ItemList() {
         // Constructeur privé pour empêcher l'instanciation
