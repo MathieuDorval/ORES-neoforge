@@ -1,7 +1,8 @@
+// src/main/java/com/__mathieu/ores/core/UnifiedOreBlockProperties.java
 package com.__mathieu.ores.core;
 
-import com.__mathieu.ores.lists.def.OreDefinition;   // Importez OreDefinition
-import com.__mathieu.ores.lists.def.StoneDefinition; // Importez StoneDefinition
+import com.__mathieu.ores.lists.def.OreDefinition;
+import com.__mathieu.ores.lists.def.StoneDefinition;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.SoundType;
@@ -16,14 +17,21 @@ public record UnifiedOreBlockProperties(
         float hardness,
         float resistance,
         MapColor mapColor,
-        SoundType soundType
+        SoundType soundType,
+        boolean isFireResistant,
+        float friction,
+        int lightEmission,
+        boolean flammable
 ) {
-
     public BlockBehaviour.Properties toBlockProperties() {
-        return BlockBehaviour.Properties.of()
+        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of()
                 .mapColor(mapColor)
                 .strength(hardness, resistance)
                 .requiresCorrectToolForDrops()
-                .sound(soundType);
+                .sound(soundType)
+                .friction(friction)
+                .lightLevel(state -> lightEmission);
+
+        return properties;
     }
 }

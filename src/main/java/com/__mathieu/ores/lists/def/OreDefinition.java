@@ -22,10 +22,15 @@ public class OreDefinition {
     private final float resistance;
     private final float hardness;
 
+    private final float friction;
+    private final int lightEmission;
+    private final boolean flammable;
+
 
     public OreDefinition(String name, int toolLevel, Rarity rarity, boolean selfExist, String baseForm,
                          int minDrops, int maxDrops, String dropItemForm, boolean isFireResistant,
-                         MapColor mapColor, SoundType soundType, float resistance, float hardness) {
+                         MapColor mapColor, SoundType soundType, float resistance, float hardness,
+                         float friction, int lightEmission, boolean flammable) { // Nouveaux paramètres dans le constructeur
         this.name = name;
         this.toolLevel = toolLevel;
         this.rarity = rarity;
@@ -39,6 +44,9 @@ public class OreDefinition {
         this.soundType = soundType;
         this.resistance = resistance;
         this.hardness = hardness;
+        this.friction = friction;
+        this.lightEmission = lightEmission;
+        this.flammable = flammable;
     }
 
     public String getName() {
@@ -93,6 +101,18 @@ public class OreDefinition {
         return hardness;
     }
 
+    public float getFriction() {
+        return friction;
+    }
+
+    public int getLightEmission() {
+        return lightEmission;
+    }
+
+    public boolean isFlammable() {
+        return flammable;
+    }
+
     @Override
     public String toString() {
         return "OreDefinition{" +
@@ -109,6 +129,9 @@ public class OreDefinition {
                 ", soundType=" + soundType +
                 ", resistance=" + resistance +
                 ", hardness=" + hardness +
+                ", friction=" + friction +
+                ", lightEmission=" + lightEmission +
+                ", flammable=" + flammable +
                 '}';
     }
 }
