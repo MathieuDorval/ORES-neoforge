@@ -1,4 +1,3 @@
-// src/main/java/com/__mathieu/ores/lists/def/StoneDefinition.java
 package com.__mathieu.ores.core.definitions;
 
 import net.minecraft.world.level.material.MapColor;

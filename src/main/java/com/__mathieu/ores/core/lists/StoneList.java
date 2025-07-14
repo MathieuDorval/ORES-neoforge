@@ -1,4 +1,3 @@
-// src/main/java/com/__mathieu/ores/lists/StoneList.java
 package com.__mathieu.ores.core.lists;
 
 import com.__mathieu.ores.core.definitions.StoneDefinition;
@@ -6,10 +5,6 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
-/**
- * Définit une liste de roches standards de Minecraft en utilisant la classe StoneDefinition.
- * Les valeurs sont basées sur le jeu vanilla et sont utiles pour la génération de minerais.
- */
 public class StoneList {
 
     private StoneList() {}
