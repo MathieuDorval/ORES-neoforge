@@ -1,31 +1,44 @@
 // src/main/java/com/__mathieu/ores/lists/def/OreDefinition.java
 package com.__mathieu.ores.lists.def;
 
-import net.minecraft.world.item.Rarity; // Importez la classe Rarity de Minecraft
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.block.SoundType;
 
 public class OreDefinition {
     private final String name;
     private final int toolLevel;
-    private final Rarity rarity; // Changé de 'int' à 'Rarity'
-    private final boolean requiresSmelting;
-    private final String baseForm; // Le type d'item de base *après traitement* (ex: "gem", "ingot", "dust")
+    private final Rarity rarity;
+    private final boolean selfExist;
+    private final String baseForm;
 
-    private final int minDrops; // Nombre minimum d'items lâchés lors du minage
-    private final int maxDrops; // Nombre maximum d'items lâchés lors du minage
-    private final String dropItemForm; // La forme de l'item lâché directement lors du minage (ex: "raw", "gem", "dust")
-    private final boolean isFireResistant; // Nouveau paramètre : résistance au feu
+    private final int minDrops;
+    private final int maxDrops;
+    private final String dropItemForm;
+    private final boolean isFireResistant;
 
-    public OreDefinition(String name, int toolLevel, Rarity rarity, boolean requiresSmelting, String baseForm,
-                         int minDrops, int maxDrops, String dropItemForm, boolean isFireResistant) {
+    private final MapColor mapColor;
+    private final SoundType soundType;
+    private final float resistance;
+    private final float hardness;
+
+
+    public OreDefinition(String name, int toolLevel, Rarity rarity, boolean selfExist, String baseForm,
+                         int minDrops, int maxDrops, String dropItemForm, boolean isFireResistant,
+                         MapColor mapColor, SoundType soundType, float resistance, float hardness) {
         this.name = name;
         this.toolLevel = toolLevel;
         this.rarity = rarity;
-        this.requiresSmelting = requiresSmelting;
+        this.selfExist = selfExist;
         this.baseForm = baseForm;
         this.minDrops = minDrops;
         this.maxDrops = maxDrops;
         this.dropItemForm = dropItemForm;
-        this.isFireResistant = isFireResistant; // Initialisation du nouveau paramètre
+        this.isFireResistant = isFireResistant;
+        this.mapColor = mapColor;
+        this.soundType = soundType;
+        this.resistance = resistance;
+        this.hardness = hardness;
     }
 
     public String getName() {
@@ -36,12 +49,12 @@ public class OreDefinition {
         return toolLevel;
     }
 
-    public Rarity getRarity() { // Le getter retourne maintenant un objet Rarity
+    public Rarity getRarity() {
         return rarity;
     }
 
-    public boolean requiresSmelting() {
-        return requiresSmelting;
+    public boolean selfExist() {
+        return selfExist;
     }
 
     public String getBaseForm() {
@@ -60,8 +73,24 @@ public class OreDefinition {
         return dropItemForm;
     }
 
-    public boolean isFireResistant() { // Nouveau getter pour isFireResistant
+    public boolean isFireResistant() {
         return isFireResistant;
+    }
+
+    public MapColor getMapColor() {
+        return mapColor;
+    }
+
+    public SoundType getSoundType() {
+        return soundType;
+    }
+
+    public float getResistance() {
+        return resistance;
+    }
+
+    public float getHardness() {
+        return hardness;
     }
 
     @Override
@@ -70,12 +99,16 @@ public class OreDefinition {
                 "name='" + name + '\'' +
                 ", toolLevel=" + toolLevel +
                 ", rarity=" + rarity +
-                ", requiresSmelting=" + requiresSmelting +
+                ", selfExist=" + selfExist +
                 ", baseForm='" + baseForm + '\'' +
                 ", minDrops=" + minDrops +
                 ", maxDrops=" + maxDrops +
                 ", dropItemForm='" + dropItemForm + '\'' +
-                ", isFireResistant=" + isFireResistant + // Ajout au toString
+                ", isFireResistant=" + isFireResistant +
+                ", mapColor=" + mapColor +
+                ", soundType=" + soundType +
+                ", resistance=" + resistance +
+                ", hardness=" + hardness +
                 '}';
     }
 }

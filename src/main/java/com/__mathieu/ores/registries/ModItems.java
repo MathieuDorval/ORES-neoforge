@@ -4,7 +4,7 @@ package com.__mathieu.ores.registries;
 import com.__mathieu.ores.ORES;
 import com.__mathieu.ores.lists.OreList;
 import com.__mathieu.ores.lists.def.OreDefinition;
-import com.__mathieu.ores.lists.def.ItemTypeDefinition;
+import com.__mathieu.ores.lists.def.ItemDefinition;
 import com.__mathieu.ores.lists.ItemList;
 
 import net.minecraft.world.item.Item;
@@ -16,7 +16,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.HashMap;
 import java.util.Map;
 
-// Cette classe est responsable de l'enregistrement de tous les items dérivés (ingots, dusts, gems, etc.)
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ORES.MODID);
 
@@ -34,7 +33,11 @@ public class ModItems {
         for (OreDefinition material : OreList.ORES) {
             String oreName = material.getName();
 
-            for (ItemTypeDefinition itemTypeDef : ItemList.ITEM_TYPES) {
+            for (ItemDefinition itemTypeDef : ItemList.ITEM_TYPES) {
+                if (itemTypeDef.getName().equals("self") && !material.selfExist()) {
+                    continue;
+                }
+
                 String fullItemName = itemTypeDef.getFullName(oreName);
 
                 Rarity oreRarity = material.getRarity();

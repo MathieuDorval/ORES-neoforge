@@ -1,37 +1,24 @@
-// src/main/java/com/__mathieu/ores/lists/def/ItemTypeDefinition.java (Modifié)
+// src/main/java/com/__mathieu/ores/lists/def/ItemTypeDefinition.java
 package com.__mathieu.ores.lists.def;
 
-import net.minecraft.world.item.Rarity; // Assurez-vous d'importer Rarity si vous l'avez ajouté
+import net.minecraft.world.item.Rarity;
 
-public class ItemTypeDefinition {
+public class ItemDefinition {
     private final String name;
     private final String prefix;
     private final String suffix;
     private final int maxStackSize;
-    private final Rarity rarity; // Si vous avez déjà ajouté ce paramètre
-    private final boolean isFireResistant; // Nouveau paramètre : résistance au feu
+    private final Rarity rarity;
+    private final boolean isFireResistant;
 
-    public ItemTypeDefinition(String name, String prefix, String suffix, int maxStackSize, Rarity rarity, boolean isFireResistant) {
+    public ItemDefinition(String name, String prefix, String suffix, int maxStackSize, Rarity rarity, boolean isFireResistant) {
         this.name = name;
         this.prefix = prefix;
         this.suffix = suffix;
         this.maxStackSize = maxStackSize;
         this.rarity = rarity;
-        this.isFireResistant = isFireResistant; // Initialisation du nouveau paramètre
-    }
-
-    // Si vous n'utilisez pas le paramètre 'rarity' actuellement, le constructeur sans rarity est :
-    /*
-    public ItemTypeDefinition(String name, String prefix, String suffix, int maxStackSize, boolean isFireResistant) {
-        this.name = name;
-        this.prefix = prefix;
-        this.suffix = suffix;
-        this.maxStackSize = maxStackSize;
-        this.rarity = Rarity.COMMON; // Valeur par défaut si non incluse
         this.isFireResistant = isFireResistant;
     }
-    */
-
 
     public String getName() {
         return name;
@@ -49,11 +36,11 @@ public class ItemTypeDefinition {
         return maxStackSize;
     }
 
-    public Rarity getRarity() { // Getter pour Rarity (si présent)
+    public Rarity getRarity() {
         return rarity;
     }
 
-    public boolean isFireResistant() { // Nouveau getter pour isFireResistant
+    public boolean isFireResistant() {
         return isFireResistant;
     }
 
@@ -76,8 +63,8 @@ public class ItemTypeDefinition {
                 ", prefix='" + prefix + '\'' +
                 ", suffix='" + suffix + '\'' +
                 ", maxStackSize=" + maxStackSize +
-                ", rarity=" + rarity + // Ajoutez au toString si présent
-                ", isFireResistant=" + isFireResistant + // Ajoutez au toString
+                ", rarity=" + rarity +
+                ", isFireResistant=" + isFireResistant +
                 '}';
     }
 }
