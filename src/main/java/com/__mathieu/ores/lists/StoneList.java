@@ -1,36 +1,76 @@
+// src/main/java/com/__mathieu/ores/lists/StoneList.java
 package com.__mathieu.ores.lists;
 
 import com.__mathieu.ores.lists.def.StoneDefinition;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
-import java.util.List;
-
+/**
+ * Définit une liste de roches standards de Minecraft en utilisant la classe StoneDefinition.
+ * Les valeurs sont basées sur le jeu vanilla et sont utiles pour la génération de minerais.
+ */
 public class StoneList {
-    public static final List<StoneDefinition> STONES = List.of(
-            // === VANILLA ===
-            // --- Overworld Stones ---
-            new StoneDefinition("stone",            "minecraft:stone",          "pickaxe",  0, 1.5F, 6.0F, MapColor.STONE, SoundType.STONE),
-            new StoneDefinition("granite",          "minecraft:granite",        "pickaxe",  0, 1.5F, 6.0F, MapColor.COLOR_RED, SoundType.STONE),
-            new StoneDefinition("diorite",          "minecraft:diorite",        "pickaxe",  0, 1.5F, 6.0F, MapColor.QUARTZ, SoundType.STONE),
-            new StoneDefinition("andesite",         "minecraft:andesite",       "pickaxe",  0, 1.5F, 6.0F, MapColor.COLOR_GRAY, SoundType.STONE),
-            new StoneDefinition("deepslate",        "minecraft:deepslate",      "pickaxe",  1, 3.0F, 6.0F, MapColor.DEEPSLATE, SoundType.DEEPSLATE),
-            new StoneDefinition("tuff",             "minecraft:tuff",           "pickaxe",  0, 1.5F, 6.0F, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.TUFF),
-            new StoneDefinition("calcite",          "minecraft:calcite",        "pickaxe",  0, 0.75F, 0.75F, MapColor.TERRACOTTA_LIGHT_GRAY, SoundType.CALCITE),
-            // --- Nether Stones ---
-            new StoneDefinition("netherrack",       "minecraft:netherrack",     "pickaxe",  0, 0.4F, 0.4F, MapColor.NETHER, SoundType.NETHERRACK),
-            new StoneDefinition("basalt",           "minecraft:basalt",         "pickaxe",  0, 1.25F, 4.2F, MapColor.PODZOL, SoundType.BASALT),
-            new StoneDefinition("smooth_basalt",    "minecraft:smooth_basalt",  "pickaxe",  0, 2.0F, 6.0F, MapColor.PODZOL, SoundType.BASALT),
-            new StoneDefinition("blackstone",       "minecraft:blackstone",     "pickaxe",  0, 1.5F, 6.0F, MapColor.COLOR_BLACK, SoundType.STONE),
-            // --- End Stones ---
-            new StoneDefinition("end_stone",        "minecraft:end_stone",      "pickaxe",  0, 3.0F, 9.0F, MapColor.SAND, SoundType.STONE),
-            // --- Shovel ---
-            new StoneDefinition("dirt",             "minecraft:dirt",           "shovel",   0, 0.5F, 0.5F, MapColor.DIRT, SoundType.GRAVEL),
-            new StoneDefinition("gravel",           "minecraft:gravel",         "shovel",   0, 0.6F, 0.6F, MapColor.DIRT, SoundType.GRAVEL),
-            new StoneDefinition("sand",             "minecraft:sand",           "shovel",   0, 0.5F, 0.5F, MapColor.SAND, SoundType.SAND)
+
+    private StoneList() {}
+
+    public static final StoneDefinition STONE = new StoneDefinition(
+            "stone", "minecraft:stone", "pickaxe", 0, 1.5F, 6.0F,
+            MapColor.STONE, SoundType.STONE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
     );
 
-    private StoneList() {
-        // Constructeur privé pour empêcher l'instanciation
-    }
+    public static final StoneDefinition GRANITE = new StoneDefinition(
+            "granite", "minecraft:granite", "pickaxe", 0, 1.5F, 6.0F,
+            MapColor.DIRT, SoundType.STONE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition DIORITE = new StoneDefinition(
+            "diorite", "minecraft:diorite", "pickaxe", 0, 1.5F, 6.0F,
+            MapColor.QUARTZ, SoundType.STONE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition ANDESITE = new StoneDefinition(
+            "andesite", "minecraft:andesite", "pickaxe", 0, 1.5F, 6.0F,
+            MapColor.STONE, SoundType.STONE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition DEEPSLATE = new StoneDefinition(
+            "deepslate", "minecraft:deepslate", "pickaxe", 0, 3.0F, 6.0F,
+            MapColor.DEEPSLATE, SoundType.DEEPSLATE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition TUFF = new StoneDefinition(
+            "tuff", "minecraft:tuff", "pickaxe", 0, 1.5F, 6.0F,
+            MapColor.TERRACOTTA_GRAY, SoundType.TUFF, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition NETHERRACK = new StoneDefinition(
+            "netherrack", "minecraft:netherrack", "pickaxe", 0, 0.4F, 0.4F,
+            MapColor.NETHER, SoundType.NETHERRACK, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition BASALT = new StoneDefinition(
+            "basalt", "minecraft:basalt", "pickaxe", 0, 1.25F, 4.2F,
+            MapColor.COLOR_BLACK, SoundType.BASALT, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition BLACKSTONE = new StoneDefinition(
+            "blackstone", "minecraft:blackstone", "pickaxe", 0, 1.5F, 6.0F,
+            MapColor.COLOR_BLACK, SoundType.STONE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
+
+    public static final StoneDefinition END_STONE = new StoneDefinition(
+            "end_stone", "minecraft:end_stone", "pickaxe", 0, 3.0F, 9.0F,
+            MapColor.SAND, SoundType.STONE, 0.6F, 0,
+            true, true, false, PushReaction.NORMAL
+    );
 }
