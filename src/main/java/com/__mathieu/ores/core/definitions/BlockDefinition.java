@@ -1,8 +1,6 @@
 package com.__mathieu.ores.core.definitions;
 
-import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.PushReaction; // Importez PushReaction
 
 public class BlockDefinition {
     // BLOC TYPE PROPERTIES
@@ -13,47 +11,52 @@ public class BlockDefinition {
     // MINING PROPERTIES (Base values for this block type)
     private final String requiredTool;      // Tool type required to mine this block (e.g., "pickaxe").
     private final int toolLevel;            // Min tool harvest level for this block.
+    private final boolean requiresCorrectToolForDrops; // True if this block requires the correct tool to drop items.
     private final float hardness;           // Mining hardness for this block.
     private final float resistance;         // Blast resistance for this block.
 
     // VISUAL & INTERACTION PROPERTIES (Base values for this block type)
-    private final MapColor mapColor;        // Map color for this block.
-    private final SoundType soundType;      // Sound type for this block.
+    private final SoundType customSoundType; // Specific sound for this block type, if null uses the ore's default sound.
     private final float friction;           // Friction coefficient for this block.
-    private final int lightEmission;        // Light level emitted by this block (0-15).
+    private final boolean canEmitLight;     // True if this block can emit light.
     private final boolean flammable;        // True if this block can catch fire.
     private final boolean canSuffocate;     // True if this block can suffocate entities.
     private final boolean isViewBlocking;   // True if this block fully blocks vision.
     private final boolean isRandomlyTicking;// True if this block receives random ticks.
-    private final PushReaction pushReaction; // How this block reacts to pistons.
+    private final boolean reactsToPistons;  // True if this block reacts to pistons.
     private final boolean isOxidizable;     // True if this block type can oxidize.
     private final boolean canEmitRedstonePower; // True if this block type can emit redstone power.
+    private final float speedFactor;        // The speed factor of the block.
+    private final float jumpFactor;         // The jump factor of the block.
 
 
     // CONSTRUCTOR
     public BlockDefinition(String name, String prefix, String suffix,
-                           String requiredTool, int toolLevel, float hardness, float resistance,
-                           MapColor mapColor, SoundType soundType, float friction, int lightEmission,
+                           String requiredTool, int toolLevel, boolean requiresCorrectToolForDrops, float hardness, float resistance,
+                           SoundType customSoundType, float friction, boolean canEmitLight,
                            boolean flammable, boolean canSuffocate, boolean isViewBlocking, boolean isRandomlyTicking,
-                           PushReaction pushReaction, boolean isOxidizable, boolean canEmitRedstonePower) {
+                           boolean reactsToPistons, boolean isOxidizable, boolean canEmitRedstonePower,
+                           float speedFactor, float jumpFactor) {
         this.name = name;
         this.prefix = prefix;
         this.suffix = suffix;
         this.requiredTool = requiredTool;
         this.toolLevel = toolLevel;
+        this.requiresCorrectToolForDrops = requiresCorrectToolForDrops;
         this.hardness = hardness;
         this.resistance = resistance;
-        this.mapColor = mapColor;
-        this.soundType = soundType;
+        this.customSoundType = customSoundType;
         this.friction = friction;
-        this.lightEmission = lightEmission;
+        this.canEmitLight = canEmitLight;
         this.flammable = flammable;
         this.canSuffocate = canSuffocate;
         this.isViewBlocking = isViewBlocking;
         this.isRandomlyTicking = isRandomlyTicking;
-        this.pushReaction = pushReaction;
+        this.reactsToPistons = reactsToPistons;
         this.isOxidizable = isOxidizable;
         this.canEmitRedstonePower = canEmitRedstonePower;
+        this.speedFactor = speedFactor;
+        this.jumpFactor = jumpFactor;
     }
 
     // GETTERS
@@ -65,21 +68,23 @@ public class BlockDefinition {
     // Mining Properties
     public String getRequiredTool() { return requiredTool; }
     public int getToolLevel() { return toolLevel; }
+    public boolean requiresCorrectToolForDrops() { return requiresCorrectToolForDrops; }
     public float getHardness() { return hardness; }
     public float getResistance() { return resistance; }
 
     // Visual & Interaction Properties
-    public MapColor getMapColor() { return mapColor; }
-    public SoundType getSoundType() { return soundType; }
+    public SoundType getCustomSoundType() { return customSoundType; }
     public float getFriction() { return friction; }
-    public int getLightEmission() { return lightEmission; }
+    public boolean canEmitLight() { return canEmitLight; }
     public boolean isFlammable() { return flammable; }
     public boolean canSuffocate() { return canSuffocate; }
     public boolean isViewBlocking() { return isViewBlocking; }
     public boolean isRandomlyTicking() { return isRandomlyTicking; }
-    public PushReaction getPushReaction() { return pushReaction; }
+    public boolean reactsToPistons() { return reactsToPistons; }
     public boolean isOxidizable() { return isOxidizable; }
     public boolean canEmitRedstonePower() { return canEmitRedstonePower; }
+    public float getSpeedFactor() { return speedFactor; }
+    public float getJumpFactor() { return jumpFactor; }
 
     public String getFullName(String materialName) {
         StringBuilder fullName = new StringBuilder();
@@ -101,19 +106,21 @@ public class BlockDefinition {
                 ", suffix='" + suffix + '\'' +
                 ", requiredTool='" + requiredTool + '\'' +
                 ", toolLevel=" + toolLevel +
+                ", requiresCorrectToolForDrops=" + requiresCorrectToolForDrops +
                 ", hardness=" + hardness +
                 ", resistance=" + resistance +
-                ", mapColor=" + mapColor +
-                ", soundType=" + soundType +
+                ", customSoundType=" + customSoundType +
                 ", friction=" + friction +
-                ", lightEmission=" + lightEmission +
+                ", canEmitLight=" + canEmitLight +
                 ", flammable=" + flammable +
                 ", canSuffocate=" + canSuffocate +
                 ", isViewBlocking=" + isViewBlocking +
                 ", isRandomlyTicking=" + isRandomlyTicking +
-                ", pushReaction=" + pushReaction +
+                ", reactsToPistons=" + reactsToPistons +
                 ", isOxidizable=" + isOxidizable +
                 ", canEmitRedstonePower=" + canEmitRedstonePower +
+                ", speedFactor=" + speedFactor +
+                ", jumpFactor=" + jumpFactor +
                 '}';
     }
 }

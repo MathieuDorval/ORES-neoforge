@@ -11,15 +11,21 @@ public class ItemDefinition {
     private final Rarity rarity;            // Base rarity for items of this type.
     private final boolean isFireResistant;  // True if items of this type should be fire resistant.
     private final boolean hasGlint;         // True if items of this type should always have the enchantment glint effect.
-    private final boolean isEdible;         // True if items of this type are edible.
-    private final int foodNutrition;        // Amount of hunger points restored by the food item.**
-    private final float foodSaturationModifier; // Saturation modifier for the food item.**
-    private final boolean foodAlwaysEdible; // True if the food item can always be eaten, regardless of hunger level.**
+
+    // Food properties
+    private final boolean isEdible;         // Can this item type be eaten?
+    private final float nutritionMultiplier; // Multiplier for the ore's base nutrition.
+    private final float saturationModifierMultiplier; // Multiplier for the ore's base saturation.
+
+    // Fuel properties
+    private final boolean isFuel;           // Can this item type be used as fuel?
+    private final float burnTimeMultiplier; // Multiplier for the ore's base burn time.
 
 
     // Constructor
-    public ItemDefinition(String name, String prefix, String suffix, int maxStackSize, Rarity rarity, boolean isFireResistant, boolean hasGlint, boolean isEdible,
-                          int foodNutrition, float foodSaturationModifier, boolean foodAlwaysEdible) { // Nouveaux paramètres nourriture
+    public ItemDefinition(String name, String prefix, String suffix, int maxStackSize, Rarity rarity, boolean isFireResistant, boolean hasGlint,
+                          boolean isEdible, float nutritionMultiplier, float saturationModifierMultiplier,
+                          boolean isFuel, float burnTimeMultiplier) {
         this.name = name;
         this.prefix = prefix;
         this.suffix = suffix;
@@ -28,9 +34,10 @@ public class ItemDefinition {
         this.isFireResistant = isFireResistant;
         this.hasGlint = hasGlint;
         this.isEdible = isEdible;
-        this.foodNutrition = foodNutrition;         // Initialisation
-        this.foodSaturationModifier = foodSaturationModifier; // Initialisation
-        this.foodAlwaysEdible = foodAlwaysEdible;   // Initialisation
+        this.nutritionMultiplier = nutritionMultiplier;
+        this.saturationModifierMultiplier = saturationModifierMultiplier;
+        this.isFuel = isFuel;
+        this.burnTimeMultiplier = burnTimeMultiplier;
     }
 
     // Getters
@@ -41,10 +48,16 @@ public class ItemDefinition {
     public Rarity getRarity() { return rarity; }
     public boolean isFireResistant() { return isFireResistant; }
     public boolean hasGlint() { return hasGlint; }
+
+    // Food Getters
     public boolean isEdible() { return isEdible; }
-    public int getFoodNutrition() { return foodNutrition; }
-    public float getFoodSaturationModifier() { return foodSaturationModifier; }
-    public boolean isFoodAlwaysEdible() { return foodAlwaysEdible; } // Nouveau getter
+    public float getNutritionMultiplier() { return nutritionMultiplier; }
+    public float getSaturationModifierMultiplier() { return saturationModifierMultiplier; }
+
+    // Fuel Getters
+    public boolean isFuel() { return isFuel; }
+    public float getBurnTimeMultiplier() { return burnTimeMultiplier; }
+
 
     // Constructs the full item ID name.
     public String getFullName(String oreName) {
@@ -70,9 +83,10 @@ public class ItemDefinition {
                 ", isFireResistant=" + isFireResistant +
                 ", hasGlint=" + hasGlint +
                 ", isEdible=" + isEdible +
-                ", foodNutrition=" + foodNutrition +
-                ", foodSaturationModifier=" + foodSaturationModifier +
-                ", foodAlwaysEdible=" + foodAlwaysEdible +
+                ", nutritionMultiplier=" + nutritionMultiplier +
+                ", saturationModifierMultiplier=" + saturationModifierMultiplier +
+                ", isFuel=" + isFuel +
+                ", burnTimeMultiplier=" + burnTimeMultiplier +
                 '}';
     }
 }
