@@ -17,10 +17,11 @@ public class ORES {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ORES(IEventBus modEventBus, ModContainer modContainer) {
+
         // Enregistre la méthode 'commonSetup' pour l'événement de chargement du mod
         modEventBus.addListener(this::commonSetup);
 
-        // Enregistre cette classe pour les événements généraux du jeu (comme le démarrage du serveur)
+        // Enregistre cette classe pour les événements généraux du jeu
         NeoForge.EVENT_BUS.register(this);
 
         // Enregistre la configuration du mod
